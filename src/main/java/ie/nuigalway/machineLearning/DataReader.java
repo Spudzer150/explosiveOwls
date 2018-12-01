@@ -12,10 +12,9 @@ import java.util.ArrayList;
  */
 public class DataReader
 {
-	static String FileLocation = "C:\\Users\\murph\\Desktop\\owls.csv";
 	static String line = "";
 	
-	public static ArrayList<Instance> readData(){
+	public static ArrayList<Instance> readData(String FileLocation){
 		ArrayList<Instance> Data = new ArrayList<Instance>();
 		
 		try {
