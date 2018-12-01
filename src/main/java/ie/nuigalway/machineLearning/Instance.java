@@ -12,11 +12,11 @@ public class Instance {
 
 	public Instance(String[] a){
 		this.data = new double[a.length-1];
-		for( int i=0; i<a.length; i++){
+		for( int i=0; i<a.length-1; i++){
 			String S = a[i];
 			data[i]= Double.parseDouble(S);
 		}
-		this.classification=a[a.length];
+		this.classification=a[a.length-1];
 	}
 
 	public double[] getData() {
