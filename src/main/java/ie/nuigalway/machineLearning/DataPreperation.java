@@ -2,6 +2,7 @@ package ie.nuigalway.machineLearning;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,5 +52,25 @@ public class DataPreperation
 		
 		return count;
 	}
-
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public ArrayList<Instance> SortingHat(ArrayList<Instance> Data , int attributeIndex){
+		final int Index=attributeIndex;
+		Data.sort(new Comparator(){
+			public int compare(Object o1, Object o2){
+				double[] d1 = ((Instance) o1).getData();
+				double[] d2 = ((Instance) o2).getData();
+						
+				Double value1 = d1[Index];
+				Double value2 = d2[Index];
+				
+				return value1.compareTo(value2);
+			}
+		});
+		
+			
+		
+		return Data;
+		
+	}
 }
