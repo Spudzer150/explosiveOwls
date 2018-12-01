@@ -1,12 +1,13 @@
 package ie.nuigalway.machineLearning;
 
-
+import java.util.Arrays;
 
 /**
  * @author Murphy Berry - 15489068
  *
  */
 public class Instance {
+
 	double[] data; 
 	String classification;
 
@@ -34,5 +35,10 @@ public class Instance {
 	public void setClassification(String classification) {
 		this.classification = classification;
 	}
+	@Override
+	public String toString() {
+		return "Instance [data= " + Arrays.toString(data) + ", classification= " + classification + "]";
+	}
+
 	
 }

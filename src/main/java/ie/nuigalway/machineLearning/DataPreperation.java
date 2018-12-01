@@ -3,6 +3,10 @@ package ie.nuigalway.machineLearning;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * @author murphy Berry - 15489068 
+ *
+ */
 public class DataPreperation
 {
 	private ArrayList<Instance> training;
