@@ -54,7 +54,7 @@ public class DataPreperation
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public ArrayList<Instance> SortingHat(ArrayList<Instance> Data , int attributeIndex){
+	public ArrayList<Instance> sortingHat(ArrayList<Instance> Data , int attributeIndex){
 		final int Index=attributeIndex;
 		Data.sort(new Comparator(){
 			public int compare(Object o1, Object o2){
