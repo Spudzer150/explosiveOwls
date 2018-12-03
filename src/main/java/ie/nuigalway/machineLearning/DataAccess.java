@@ -1,6 +1,7 @@
 package ie.nuigalway.machineLearning;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -38,24 +39,38 @@ public class DataAccess
 
 		return Data;
 	}
-  
+  /**
+   * A method to print out the predicted and the actual classifications to a text file
+   * 
+   * @param predicted
+   * @param actual
+   * @param accuracy
+   */
 	public static void writeData(ArrayList<String> predicted, ArrayList<String> actual, double accuracy){
 		try {
-			Writer fileWriter = new FileWriter("Output.txt");
+			Writer fileWriter = new FileWriter("Output.txt", true);
+			BufferedWriter bw = new BufferedWriter(fileWriter);
 			
 			
-			
+			bw.write("Predicted: ");
 			for (String classType : predicted) {
-				fileWriter.write(classType + "; ");
+				bw.write(classType + "; ");
 			}
-			fileWriter.write(" ");
+			bw.newLine();
 			
+			bw.write("Actual: ");
 			for (String classType : actual) {
-				fileWriter.write(classType + "; ");
+				bw.write(classType + "; ");
 			}
-			fileWriter.write(" ");
+			bw.newLine();
 			
-			fileWriter.write("Accuracy: " + accuracy * 100 + "%");
+			bw.write("Accuracy: " + accuracy * 100 + "%");
+			
+			bw.flush();
+			fileWriter.flush();
+			
+			bw.close();
+			fileWriter.close();
 			
 			
 		} catch (IOException e) {
