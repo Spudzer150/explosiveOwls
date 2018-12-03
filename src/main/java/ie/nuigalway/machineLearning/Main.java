@@ -46,11 +46,6 @@ public class Main {
 		
 		System.out.println("Accuracy: " + classifier.getClassificationAccuracy(predictedClasses, actualClasses) * 100 + "%");
 		
-		
-		for(int index : dataPreper.getDataSplitIndexes(10, owls.size())) {
-			System.out.println(index);
-		}
-		
 		DataAccess.writeData(predictedClasses, actualClasses,classifier.getClassificationAccuracy(predictedClasses, actualClasses));
 	}
 
