@@ -2,7 +2,6 @@ package ie.nuigalway.machineLearning;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -20,6 +19,7 @@ public class C45 {
 	// The pruning ratio. Used to determine when there is enough of a class in a node
 	// to make the node a leaf
 	private final static double RATIO = 0.7;
+	// Sets the minimum dataset size for a leaf 
 	private final static int MINDATASETSIZE = 25;
 	
 	/**
@@ -229,10 +229,19 @@ public class C45 {
 		return false;
 	}
 	
+	/**
+	 * Constructs the Tree for a give dataset
+	 * @param dataset - the dataset to train the tree
+	 */
 	public void trainTree(ArrayList<Instance> dataset) {
 		this.rootNode = buildTree(dataset);
 	}
 	
+	/**
+	 * Classifies a testing dataset
+	 * @param dataset - the dataset to classify
+	 * @return ArrayList<String> - a List of predicted class strings 
+	 */
 	public ArrayList<String> classify(ArrayList<Instance> dataset) {
 		predictedClasses = new ArrayList<String>();
 		for(Instance instance : dataset) {
@@ -241,6 +250,12 @@ public class C45 {
 		return predictedClasses;
 	}
 	
+	/**
+	 * Classifies a single instance of the dataset.
+	 * @param instance - the instance to classify
+	 * @param node - the root node of the tree
+	 * @return String - the predicted class type
+	 */
 	private String classifyInstance(Instance instance, Node node) {
 		if (StringUtils.isNotBlank(node.getClassification())) {
 			return node.getClassification();
@@ -256,6 +271,12 @@ public class C45 {
 		}
 	}
 	
+	/**
+	 * Calculates the classification accuracy by comparing a list of predicted classes to the list of actual classes
+	 * @param predicted - the list of predicted classes
+	 * @param actual - the list of actual classes
+	 * @return double - the classification accuracy between 0 and 1
+	 */
 	public double getClassificationAccuracy(ArrayList<String> predicted, ArrayList<String> actual) {
 		int totalNumOfInstances = predicted.size();
 		int numCorrectClassifications = 0;
@@ -268,6 +289,12 @@ public class C45 {
 		return toReturn;
 	}
 	
+	/**
+	 * Preforms k-fold cross validation using the c4.5 classifier and prints 
+	 * each folds accuracy as well as an overall accuracy
+	 * @param numFolds - the number of folds
+	 * @param dataset - the dataset
+	 */
 	public void crossValidation(int numFolds, ArrayList<Instance> dataset) {
 		int[] splittingIndexes = dataPreper.getDataSplitIndexes(numFolds, dataset.size());
 		
