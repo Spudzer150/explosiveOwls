@@ -12,8 +12,8 @@ public class Main {
 	public static void main(String[] args) {
 		String path = "./resources/owls.csv";
 		
-		ArrayList<Instance> owls = DataReader.readData(path);
-		/*
+		ArrayList<Instance> owls = DataAccess.readData(path);
+		
 		System.out.println(owls.get(45).toString());
 		
 		DataPreperation dataPreper = new DataPreperation();
@@ -51,10 +51,11 @@ public class Main {
 			System.out.println(index);
 		}
 		
-		*/
+		DataAccess.writeData(predictedClasses, actualClasses,classifier.getClassificationAccuracy(predictedClasses, actualClasses));
 		
-		C45 classifier = new C45();
-		classifier.crossValidation(10, owls);
+		
+		C45 classifier1 = new C45();
+		classifier1.crossValidation(10, owls);
 	}
 
 }
