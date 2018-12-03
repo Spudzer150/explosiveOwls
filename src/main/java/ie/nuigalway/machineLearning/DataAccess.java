@@ -10,6 +10,8 @@ import java.io.Writer;
 import java.util.ArrayList;
 
 /**
+ * Class to handle reading in from and printing out to a file
+ * 
  * Author: Murphy Berry - 15489068 
  *
  */
@@ -17,6 +19,12 @@ public class DataAccess
 {
 	static String line = "";
 	
+	/**
+	 * a method to read in the data for classification from a csv and put it into a usable format 
+	 * 
+	 * @param FileLocation
+	 * @return an arraylist of instances each containing an owl
+	 */
 	public static ArrayList<Instance> readData(String FileLocation){
 		ArrayList<Instance> Data = new ArrayList<Instance>();
 		

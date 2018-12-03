@@ -1,6 +1,8 @@
 package ie.nuigalway.machineLearning;
 
 /**
+ * A data class to store counts of each classification
+ * 
  * @author murphy Berry - 15489068 
  *
  */

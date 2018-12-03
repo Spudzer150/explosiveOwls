@@ -3,6 +3,8 @@ package ie.nuigalway.machineLearning;
 import java.util.Arrays;
 
 /**
+ * A data class to store the information for one data point (In this case an owl)
+ * 
  * @author Murphy Berry - 15489068
  *
  */
