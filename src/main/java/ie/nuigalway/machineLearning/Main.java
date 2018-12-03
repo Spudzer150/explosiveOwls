@@ -34,11 +34,13 @@ public class Main {
 			actualClasses.add(ins.getClassification());
 		}
 		
+		System.out.println("Predicted Classifications: ");
 		for (String classType : predictedClasses) {
 			System.out.print(classType + "; ");
 		}
 		System.out.println();
 		
+		System.out.println("Actual Classifications: ");
 		for (String classType : actualClasses) {
 			System.out.print(classType + "; ");
 		}
