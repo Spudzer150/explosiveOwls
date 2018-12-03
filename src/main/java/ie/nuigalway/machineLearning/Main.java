@@ -52,10 +52,6 @@ public class Main {
 		}
 		
 		DataAccess.writeData(predictedClasses, actualClasses,classifier.getClassificationAccuracy(predictedClasses, actualClasses));
-		
-		
-		C45 classifier1 = new C45();
-		classifier1.crossValidation(10, owls);
 	}
 
 }

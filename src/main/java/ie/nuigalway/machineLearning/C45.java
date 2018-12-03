@@ -20,7 +20,7 @@ public class C45 {
 	// to make the node a leaf
 	private final static double RATIO = 0.7;
 	// Sets the minimum dataset size for a leaf 
-	private final static int MINDATASETSIZE = 25;
+	private final static int MINDATASETSIZE = 30;
 	
 	/**
 	 * Constructor
