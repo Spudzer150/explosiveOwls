@@ -20,6 +20,7 @@ public class C45 {
 	// The pruning ratio. Used to determine when there is enough of a class in a node
 	// to make the node a leaf
 	private final static double RATIO = 0.7;
+	private final static int MINDATASETSIZE = 25;
 	
 	/**
 	 * Constructor
@@ -210,12 +211,19 @@ public class C45 {
 				
 			}
 			
-			for (int instanceCount : instancesCounts) {
-				double instanceProportion = (double) instanceCount/dataset.size();
-				if (instanceProportion >= RATIO) {
-					dataset.set(0, instances.get(instancesCounts.indexOf(instanceCount)));
-					return true;
+			int indexOfGreatestCount = 0;
+			int maxCount = 0;
+			for (int i=0; i<instancesCounts.size(); i++) {
+				if (instancesCounts.get(i) > maxCount) {
+					maxCount = instancesCounts.get(i);
+					indexOfGreatestCount = i;
 				}
+			}
+			
+			double instanceProportion = (double) instancesCounts.get(indexOfGreatestCount)/dataset.size();
+			if (dataset.size() < MINDATASETSIZE || instanceProportion >= RATIO) {
+				dataset.set(0, instances.get(indexOfGreatestCount));
+				return true;
 			}
 		}
 		return false;
