@@ -1,5 +1,9 @@
 package ie.nuigalway.machineLearning;
 
+/**
+ * @author murphy Berry - 15489068 
+ *
+ */
 public class ClassificationCount {
 	
 	private String type;
