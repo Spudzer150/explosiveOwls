@@ -14,8 +14,6 @@ public class Main {
 		
 		ArrayList<Instance> owls = DataAccess.readData(path);
 		
-		System.out.println(owls.get(45).toString());
-		
 		DataPreperation dataPreper = new DataPreperation();
 		dataPreper.DataSplit(owls);
 		
