@@ -18,6 +18,11 @@ public class DataPreperation
 		this.testing = new ArrayList<Instance>();
 	}
 	
+	
+	/**
+	 * A simple method to split the data into 1/3 and 2/3 segments for testing/training
+	 * @param Data
+	 */
 	public void DataSplit(ArrayList<Instance> Data) {
 		Collections.shuffle(Data);
 		
@@ -27,36 +32,11 @@ public class DataPreperation
 	}
 	
 	/**
-	 * @author Niall Greaney 15479942
+	 * A class to count occurences of each unique target attribute value
 	 * 
-	 * Get the indexs for splitting the dataset for k-fold cross validation
-	 * @param numFolds
-	 * @param datasetSize
-	 * @return int[] - an array of splitting indexes
+	 * @param Data
+	 * @return an Arraylist of classificationCount objects containing the counts of the data
 	 */
-	public int[] getDataSplitIndexes(int numFolds, int datasetSize) {
-		
-		int[] splittingIndexes = new int[numFolds+1];
-		
-		// First index is 0 
-		splittingIndexes[0] = 0;
-		
-		/*
-		 * Split the array into numFolds sections.
-		 * E.g. for an array of 10 elements we would split at 2, 5 and 7
-		 * I.e. [0, 1] [2, 3, 4] [5, 6] [7, 8, 9]
-		 */
-		for (int i=1; i<numFolds; i++) {
-			splittingIndexes[i] = (int) ((i) * (float) datasetSize/numFolds); 
-		}
-		
-		// Last index is the last equal to the size of the array as
-		// the toIndex in List.split() is exclusive
-		splittingIndexes[numFolds] = datasetSize;
-		
-		return splittingIndexes;
-	}
-	
 	public ArrayList<ClassificationCount> getClassificationCount(ArrayList<Instance> Data) {
 		ArrayList<ClassificationCount> count = new ArrayList<ClassificationCount>();
 		
@@ -81,6 +61,14 @@ public class DataPreperation
 		
 		return count;
 	}
+	
+	/**
+	 * A comically named method to sort an Arraylist of instances on a given attribute index
+	 * 
+	 * @param Data
+	 * @param attributeIndex
+	 * @return Sorted Array of Instances
+	 */
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public ArrayList<Instance> sortingHat(ArrayList<Instance> Data , int attributeIndex) {
@@ -112,6 +100,37 @@ public class DataPreperation
 	 */
 	public ArrayList<Instance> getTesting() {
 		return testing;
+	}
+	
+	/**
+	 * @author Niall Greaney 15479942
+	 * 
+	 * Get the indexs for splitting the dataset for k-fold cross validation
+	 * @param numFolds
+	 * @param datasetSize
+	 * @return int[] - an array of splitting indexes
+	 */
+	public int[] getDataSplitIndexes(int numFolds, int datasetSize) {
+		
+		int[] splittingIndexes = new int[numFolds+1];
+		
+		// First index is 0 
+		splittingIndexes[0] = 0;
+		
+		/*
+		 * Split the array into numFolds sections.
+		 * E.g. for an array of 10 elements we would split at 2, 5 and 7
+		 * I.e. [0, 1] [2, 3, 4] [5, 6] [7, 8, 9]
+		 */
+		for (int i=1; i<numFolds; i++) {
+			splittingIndexes[i] = (int) ((i) * (float) datasetSize/numFolds); 
+		}
+		
+		// Last index is the last equal to the size of the array as
+		// the toIndex in List.split() is exclusive
+		splittingIndexes[numFolds] = datasetSize;
+		
+		return splittingIndexes;
 	}
 	
 }
